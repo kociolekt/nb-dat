@@ -1,0 +1,24 @@
+{
+  "name": "nb-dat",
+  "version": "1.0.0",
+  "description": "Dat as components repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kociolekt/nb-dat.git"
+  },
+  "author": "kociolekt <kociolek.t@gmail.com> (https://github.com/kociolekt)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kociolekt/nb-dat/issues"
+  },
+  "homepage": "https://github.com/kociolekt/nb-dat#readme",
+  "dependencies": {
+    "dat-node": "^3.5.8",
+    "hypercore": "^6.12.3",
+    "hypercore-archiver": "^4.4.1"
+  }
+}
