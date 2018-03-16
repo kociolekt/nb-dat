@@ -1,3 +1,7 @@
+let ServerProtocol = require('./server-protocol');
+let serverProtocol = new ServerProtocol();
+
+/*
 var net = require('net');
 var archiver = require('hypercore-archiver');
 var hypercore = require('hypercore');
@@ -6,8 +10,8 @@ var ar = archiver('./archiver');
 var feed = hypercore('./feed');
 var HOST = '127.0.0.1';
 var PORT = 6969;
-
-
+*/
+/*
 net.createServer(function(sock) {
     
     console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
@@ -27,10 +31,10 @@ net.createServer(function(sock) {
 }).listen(PORT, HOST);
 
 console.log('Server listening on ' + HOST +':'+ PORT);
+*/
 
 
-
-
+/*
 feed.on('ready', function () {
   ar.add(feed.key, function (err) {
     console.log('will now archive the feed')
@@ -39,4 +43,4 @@ feed.on('ready', function () {
 
 ar.on('sync', function (feed) {
   console.log('feed is synced', feed.key)
-})
+})*/
