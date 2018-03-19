@@ -1,6 +1,6 @@
-let net = require('net');
-let log = require('../config.json');
-let SimpleEventer = require('@k2/simple-eventer');
+import net from 'net';
+import log from '../config.json';
+import SimpleEventer from '@k2/simple-eventer';
 
 let defaults = {
     autoconnect: false,
@@ -9,7 +9,7 @@ let defaults = {
     verbose: 1
 };
 
-class ClientProtocol extends SimpleEventer {
+export default class ClientProtocol extends SimpleEventer {
     constructor(options) {
         super();
 
@@ -76,5 +76,3 @@ class ClientProtocol extends SimpleEventer {
         }
     }
 }
-
-module.exports = ClientProtocol;

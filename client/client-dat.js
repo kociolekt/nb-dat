@@ -1,5 +1,5 @@
-let Dat = require('dat-node');
-let log = require('../config.json');
+import Dat from 'dat-node';
+import log from '../config.json';
 
 let defaults = {
     ignore: ['**/node_modules/**'],
@@ -7,7 +7,7 @@ let defaults = {
     verbose: 1
 };
 
-class ClientDat {
+export default class ClientDat {
     constructor(options) {
         this.dat = null;
 
@@ -91,5 +91,3 @@ class ClientDat {
         });
     }
 }
-
-module.exports = ClientDat;

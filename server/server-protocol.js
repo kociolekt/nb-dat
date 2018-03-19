@@ -1,8 +1,9 @@
-let log = require('../config.json');
-let net = require('net');
-let SimpleEventer = require('@k2/simple-eventer');
-let ClientHandler = require('./client-handler');
-let config = require('../config.json');
+import log from '../config.json';
+import net from 'net';
+import SimpleEventer from '@k2/simple-eventer';
+import ClientHandler from './client-handler';
+import config from '../config.json';
+
 let defaults = {
     autolisten: true,
     host: config.host,
@@ -10,7 +11,7 @@ let defaults = {
     verbose: 1
 };
 
-class ServerProtocol extends SimpleEventer {
+export default class ServerProtocol extends SimpleEventer {
     constructor(options) {
         super();
 
@@ -42,5 +43,3 @@ class ServerProtocol extends SimpleEventer {
         log('Server listening on ' + this.settings.host + ':' + this.settings.port);
     }
 }
-
-module.exports = ServerProtocol;

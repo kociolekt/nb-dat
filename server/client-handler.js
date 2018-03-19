@@ -1,13 +1,13 @@
-let log = require('../config.json');
-let config = require('../config.json');
+import log from '../config.json';
+import config from '../config.json';
 
-let SimpleEventer = require('@k2/simple-eventer');
+import SimpleEventer from '@k2/simple-eventer';
 
 let defaults = {
 
 };
 
-class ClientHandler extends SimpleEventer {
+export default class ClientHandler extends SimpleEventer {
     constructor(socket) {
         super();
         this.socket = socket;
@@ -53,5 +53,3 @@ class ClientHandler extends SimpleEventer {
         this.socket.write(JSON.stringify({type, data}));
     }
 }
-
-module.exports = ClientHandler;

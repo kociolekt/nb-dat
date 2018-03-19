@@ -1,7 +1,7 @@
-let config = require('../config.json');
-let ClientProtocol = require('./client-protocol');
+import config from '../config.json';
+import ClientProtocol from './client-protocol';
 
-class NotBit {
+export default class NotBit {
     constructor() {
         this.clientProtocol = null;
 
@@ -21,5 +21,3 @@ class NotBit {
         this.clientProtocol.commandPublish('testkey', 'testname');
     }
 }
-
-module.exports = NotBit;

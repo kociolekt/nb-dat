@@ -19,6 +19,7 @@
   "dependencies": {
     "@k2/simple-eventer": "^1.1.0",
     "dat-node": "^3.5.8",
+    "esm": "^3.0.6",
     "hypercore": "^6.12.3",
     "hypercore-archiver": "^4.4.1"
   }
