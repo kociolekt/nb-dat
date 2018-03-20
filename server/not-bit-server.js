@@ -1,4 +1,4 @@
-import log from '../config.json';
+import log from '../log';
 import net from 'net';
 import SimpleEventer from '@k2/simple-eventer';
 import ClientHandler from './client-handler';
@@ -7,11 +7,10 @@ import config from '../config.json';
 let defaults = {
     autolisten: true,
     host: config.host,
-    port: config.port,
-    verbose: 1
+    port: config.port
 };
 
-export default class ServerProtocol extends SimpleEventer {
+export default class NotBitServer extends SimpleEventer {
     constructor(options) {
         super();
 

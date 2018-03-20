@@ -21,6 +21,7 @@
     "dat-node": "^3.5.8",
     "esm": "^3.0.6",
     "hypercore": "^6.12.3",
-    "hypercore-archiver": "^4.4.1"
+    "hypercore-archiver": "^4.4.1",
+    "node-json-db": "^0.7.5"
   }
 }

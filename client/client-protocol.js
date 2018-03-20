@@ -1,12 +1,13 @@
 import net from 'net';
-import log from '../config.json';
+import log from '../log';
+import capitalize from '../capitalize';
+import config from '../config.json';
 import SimpleEventer from '@k2/simple-eventer';
 
 let defaults = {
     autoconnect: false,
     host: config.host,
-    port: config.port,
-    verbose: 1
+    port: config.port
 };
 
 export default class ClientProtocol extends SimpleEventer {
@@ -35,6 +36,23 @@ export default class ClientProtocol extends SimpleEventer {
                     log('DISCONNECTED (BY SERVER)');
                 });
 
+                this.client.on('drain', () => {
+                    log('DRAIN');
+                });
+
+                this.client.on('end', () => {
+                    log('END');
+                });
+
+                this.client.on('lookup', () => {
+                    log('LOOKUP');
+                });
+
+                this.client.on('error', (e) => {
+                    log('ERROR');
+                    log(e);
+                });
+
                 this.fire('connected');
                 resolve(this);
             });
@@ -44,7 +62,7 @@ export default class ClientProtocol extends SimpleEventer {
     processData(data) {
         log('RECIEVED: ' + data);
         let message = JSON.parse(data);
-        let handleName = 'handle' + message.type.toUpperCase();
+        let handleName = 'handle' + capitalize(message.type);
 
         if(typeof this[handleName] === 'function') {
             this[handleName](message.data);

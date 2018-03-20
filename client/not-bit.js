@@ -1,23 +1,22 @@
+import path from 'path';
+import log from '../log';
 import config from '../config.json';
 import ClientProtocol from './client-protocol';
+import ClientDat from './client-dat';
 
 export default class NotBit {
-    constructor() {
-        this.clientProtocol = null;
+    async publish(componentPath) {
+        let clientProtocol = new ClientProtocol();
+        let clientDat = new ClientDat();
 
-        this.init();
-    }
+        await clientProtocol.connect();
 
-    init() {
-        this.initConnection();
-    }
+        let key = await clientDat.share(componentPath);
+        let name = path.basename(path.dirname(componentPath));
 
-    initConnection() {
-        this.clientProtocol = new ClientProtocol();
-    }
-
-    async publish() {
-        await this.clientProtocol.connect();
-        this.clientProtocol.commandPublish('testkey', 'testname');
+        clientProtocol.on('publish', (data) => {
+            log('PUBLISHED ' + data);
+        });
+        clientProtocol.commandPublish(key, name);
     }
 }

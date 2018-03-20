@@ -1,23 +1,18 @@
 import Dat from 'dat-node';
-import log from '../config.json';
+import log from '../log';
 
 let defaults = {
-    ignore: ['**/node_modules/**'],
-    componentDir: process.cwd(),
-    verbose: 1
+    ignore: ['**/node_modules/**']
 };
 
 export default class ClientDat {
     constructor(options) {
-        this.dat = null;
 
         this.settings = Object.assign({}, defaults, options);
     }
 
-    share(name) {
+    share(dir = process.cwd()) {
         return new Promise((resolve, reject) => {
-            let dir = this.settings.componentDir;
-
             Dat(dir, {temp: true}, (err, dat) => {
                 if (err) {
                     reject(err);
@@ -37,7 +32,6 @@ export default class ClientDat {
                     }
                     log('Done importing');
                     log('Archive size:', dat.archive.content.byteLength);
-                    resolve();
                 });
 
                 progress.on('put', (src, dest) => {
@@ -45,6 +39,7 @@ export default class ClientDat {
                 });
 
                 log(`Sharing: ${dat.key.toString('hex')}\n`);
+                resolve(dat.key.toString('hex'));
             });
         });
     }
